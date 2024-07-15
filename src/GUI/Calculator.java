@@ -32,7 +32,10 @@ class Cal implements ActionListener, MouseListener {
 
         Object o = d.getSource();
 
-        if (o.equals(b1)) {
+        if (o.equals(bDec)) {
+            tf.setText(tf.getText().concat("."));
+
+        } else if (o.equals(b1)) {
             tf.setText(tf.getText() + b1.getLabel());
 
         } else if (o.equals(b2)) {
@@ -67,7 +70,6 @@ class Cal implements ActionListener, MouseListener {
             tf.setText("");
             for (int i = 0; i < string.length() - 1; i++) {
                 tf.setText(tf.getText() + string.charAt(i));
-
             }
 
         } else if (o.equals(bClr)) {
@@ -110,10 +112,10 @@ class Cal implements ActionListener, MouseListener {
             } else if (op.equals("-")) {
                 tot = fdv - sdv;
                 tf.setText(tot + "");
-            } else if (op.equals("×")) {
+            } else if (op.equals("*")) {
                 tot = fdv * sdv;
                 tf.setText(tot + "");
-            } else if (op.equals("÷")) {
+            } else if (op.equals("/")) {
                 tot = fdv / sdv;
                 tf.setText(tot + "");
             }
@@ -146,12 +148,9 @@ class Cal implements ActionListener, MouseListener {
         f.setSize(400, 550);
         f.setLocationRelativeTo(null);
 
-        Color originalColor;
-        Color hoverColor = Color.LIGHT_GRAY;
-
         Font f1 = new Font("Quicksand", Font.BOLD, 30);
-        Font f2 = new Font("Quicksand", Font.BOLD, 30);
-        Font f3 = new Font("Quicksand", Font.BOLD, 40);
+        Font f2 = new Font("Quicksand", Font.BOLD, 20);
+        Font f3 = new Font("Quicksand", Font.BOLD, 35);
 
         MenuBar mb = new MenuBar();
 
@@ -165,8 +164,13 @@ class Cal implements ActionListener, MouseListener {
         m2.add(mi2);
         m2.add(mi3);
 
+        Menu m3 = new Menu("Help");
+        MenuItem mi4 = new MenuItem("About");
+        m3.add(mi4);
+
         mb.add(m1);
         mb.add(m2);
+        mb.add(m3);
 
         f.setMenuBar(mb);
 
@@ -176,7 +180,7 @@ class Cal implements ActionListener, MouseListener {
         p2.setLayout(g1);
         p2.setBackground(Color.WHITE);
 
-        tf = new TextField(10);
+        tf = new TextField(14);
         tf.setFont(f3);
         tf.setEditable(true);
         tf.setForeground(Color.black);
@@ -197,8 +201,8 @@ class Cal implements ActionListener, MouseListener {
         b0 = new Button("0");
         bAdd = new Button("+");
         bSub = new Button("-");
-        bMul = new Button("×");
-        bDiv = new Button("÷");
+        bMul = new Button("*");
+        bDiv = new Button("/");
         bPerc = new Button("%");
         bSqr = new Button("√ ");
         bDec = new Button(".");
@@ -206,13 +210,13 @@ class Cal implements ActionListener, MouseListener {
         bDel = new Button("Del");
         bClr = new Button("C");
 
-        bAdd.setForeground(Color.CYAN);
-        bSub.setForeground(Color.CYAN);
-        bMul.setForeground(Color.CYAN);
-        bDiv.setForeground(Color.CYAN);
-        bPerc.setForeground(Color.CYAN);
-        bSqr.setForeground(Color.CYAN);
-        bEqu.setForeground(Color.CYAN);
+        bAdd.setForeground(Color.BLUE);
+        bSub.setForeground(Color.BLUE);
+        bMul.setForeground(Color.BLUE);
+        bDiv.setForeground(Color.BLUE);
+        bPerc.setForeground(Color.BLUE);
+        bSqr.setForeground(Color.BLUE);
+        bEqu.setForeground(Color.BLUE);
         bClr.setForeground(Color.RED);
 
         b1.setBackground(Color.white);
@@ -246,6 +250,16 @@ class Cal implements ActionListener, MouseListener {
         b8.setFont(f1);
         b9.setFont(f1);
         b0.setFont(f1);
+        bAdd.setFont(f2);
+        bSub.setFont(f2);
+        bMul.setFont(f2);
+        bDiv.setFont(f2);
+        bPerc.setFont(f2);
+        bSqr.setFont(f2);
+        bDec.setFont(f2);
+        bEqu.setFont(f3);
+        bDel.setFont(f2);
+        bClr.setFont(f2);
 
         p2.add(bClr);
         p2.add(bPerc);
